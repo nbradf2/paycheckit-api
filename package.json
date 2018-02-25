@@ -1,7 +1,7 @@
 {
   "name": "paycheckit-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Server-side implementation for Paycheckit React app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
