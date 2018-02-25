@@ -5,5 +5,5 @@ exports.DATABASE_URL =
 
 
 module.exports = {
-	CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || 'http://localhost:3000'
+	CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || 'http://localhost:8080'
 };
