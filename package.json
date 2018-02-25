@@ -4,8 +4,12 @@
   "description": "Server-side implementation for Paycheckit React app",
   "main": "index.js",
   "scripts": {
-  	"start": "node server.js",
+    "start": "node server.js",
     "test": "mocha --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbradf2/paycheckit-api.git"
   },
   "author": "Nicole Bradford",
   "license": "ISC",
