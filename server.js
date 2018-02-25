@@ -13,6 +13,6 @@ app.get('/api/*', (req, res) => {
 	res.json({ok: true});
 });
 
-app.listen(8080);
+app.listen(3000);
 
 module.exports = {app};
