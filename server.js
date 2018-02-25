@@ -10,7 +10,7 @@ const app = express();
 // 	})
 // );
 
-app.get('/api/*', (req, res) => {
+app.get('/*', (req, res) => {
 	res.json({ok: true});
 });
 
