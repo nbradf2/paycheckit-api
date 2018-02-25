@@ -1,4 +1,11 @@
 language: node_js
 node_js: node
-services: 
-  - mongodb
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: InOcEk2hsnlSqgTtlAsZvFJdO84Iezx/FO5f/wE8MOAY2J4cFKPdbhvVIyCR2ng+s5D5o83YkWww/R9oKikMzrorBbxLxxnDG527fiq0vtGZaHBZkQFAtdsS7z/7AYnxJjbvblk+hzgt6qP/PWZNgokSFe1nsM0A+CR8udzT6oDv+qhWAxfsjDEzeccGOsPVreLQuwi7qxlhKAnGmmZ7XkT/eki9GQSoSPF+R9lYDDLIJQrQbWibvqBmX5KFOIdvYsDK0YrKM0cygInyIYq7eQdk3YGm62jtpjiEXiZU6loy99NUuziX7pyiXx99kt6ZWk6zsDB1wC0kgUFpy9w1hE6nFDjWUAuro+qd4k+OFiuYZ2n5PGUbQzdUSVsaocrAhFwyFs3PZM4QI1SqWpP63yv+4SLPbEA0SIA6b6ZjhXntwBZ6BuroiqLGHa6/0jUYJC+RU+bSpslGYx+W0vHqG+QZjnIvJNRN8fem1PMvPHslW0JajZ13624pwLTD2rbMT7f6oPTA1oLykpe/+r1AVo+6JOTRUBwveyobCq2BmqvOHCz1d/60kqbAyYBgGWu9U/tsBr4pNBGAOle/WYIUb28vGrfJ8SBKs7tVS31SWoaDxSzH3CotVNJgsNwS0MQ65cgOkn2jSN/VlD6k5lrmNBZAkeq9tPbYbqbptvQ2vzg=
+  app: peaceful-falls-28699
+  on:
+    repo: nbradf2/paycheckit-api
