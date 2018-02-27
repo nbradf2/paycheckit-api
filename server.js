@@ -11,7 +11,7 @@ const app = express();
 // );
 
 app.get('/*', (req, res) => {
-	res.json({ok: true});
+	res.json({ok: "monkey"});
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
