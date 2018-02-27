@@ -3,10 +3,11 @@ const config = require('../config');
 
 const router = express.Router();
 // const passport = require('passport');
-const bodyParser = require('bodyParser');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 const {LedgerEntry} = require('./models');
 
-router.get('/', (req, res)=> {
+router.get('/', (req, res)=> { 
 	LedgerEntry
 		.find()
 		.exec()
@@ -35,7 +36,7 @@ router.get('/:id', (req, res) => {
 		.findById(req.params.id)
 		.exec()
 		.then(entry => res.status(200).json(entry))
-		.catch(err = {
+		.catch(err => {
 			console.error(err);
 			res.status(500).json({message: 'Internal server error'});
 		})
@@ -68,6 +69,8 @@ router.post('/', jsonParser, (req, res) => {
 
 
 
+
+module.exports = {router};
 
 
 
