@@ -1,28 +1,32 @@
-// require('dotenv').config();
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-// const passport = require('pasport');
-// const cors = require('cors');
-// const {CLIENT_ORIGIN} = require('./config');
+const passport = require('passport');
+const cors = require('cors');
+const {CLIENT_ORIGIN} = require('./config');
 
-const {router: ledgerEntriesRouter} = require('./budget')
+const { router: usersRouter } = require('./users');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const { router: ledgerEntriesRouter} = require('./budget')
+
+mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
 const app = express();
 
-// app.use(
-// 	cors({
-// 		origin: CLIENT_ORIGIN
-// 	})
-// );
+app.use(
+	cors({
+		origin: [CLIENT_ORIGIN]
+	})
+);
 
 app.use(morgan('common'));
 
-// app.use(passport.initialize());
-// app.use(localStrategy);
-// app.use(jwtStrategy);
+app.use(passport.initialize());
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 app.use('/budget/', ledgerEntriesRouter);
 
