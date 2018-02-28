@@ -91,6 +91,16 @@ router.put('/:id', jsonParser, (req, res) => {
 		});
 });
 
+router.delete('/:id', (req, res) => {
+	LedgerEntry
+		.findByIdAndRemove(req.params.id)
+		.exec()
+		.then(() => res.status(204).end())
+		.catch(err => {
+			res.status(500).json({message: 'Internal server error'});
+		})
+});
+
 
 
 
