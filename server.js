@@ -29,6 +29,8 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/budget/', ledgerEntriesRouter);
+app.use('/api/users/', usersRouter);
+app.use('/api/auth/', authRouter);
 
 app.get('/*', (req, res) => {
 	res.json({ok: true});
