@@ -73,7 +73,23 @@ describe('Auth endpoints', function () {
 					expect(res).to.have.status(401);
 				});
 		});
-		
+		it('Should reject requests with incorrect passwords', function () {
+			return chai
+				.request(app)
+				.post('/api/auth/login')
+				.send({ username, password: 'wrongPassword' })
+				.then(() => 
+					expect.fail(null, null, 'Request should not succeed')
+				)
+				.catch(err => {
+					if (err instanceof chai.AssertionError) {
+						throw err;
+					}
+
+					const res = err.response;
+					expect(res).to.have.status(401);
+				});
+		});
 
 	})
 })
