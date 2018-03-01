@@ -2,12 +2,12 @@ const express = require('express');
 const config = require('../config');
 
 const router = express.Router();
-// const passport = require('passport');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const {LedgerEntry} = require('./models');
 
-router.get('/', (req, res)=> { 
+router.get('/', passport.authenticate('jwt', {session: false}), (req, res)=> { 
 	LedgerEntry
 		.find()
 		.exec()
@@ -19,7 +19,7 @@ router.get('/', (req, res)=> {
 		})
 });
 
-router.get('/user/:user', (req, res) => {
+router.get('/user/:user', passport.authenticate('jwt', {session: false}), (req, res) => {
 	LedgerEntry
 		.find({user: `${req.params.user}`})
 		.exec()

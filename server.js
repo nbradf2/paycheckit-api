@@ -32,8 +32,16 @@ app.use('/budget/', ledgerEntriesRouter);
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
-app.get('/*', (req, res) => {
-	res.json({ok: true});
+const jwtAuth = passport.authenticate('jwt', {session: false});
+
+app.get('/api/protected', jwtAuth, (req, res) => {
+	return res.json({
+		data: 'rosebud'
+	});
+});
+
+app.use('*', (req, res) => {
+	return res.status(404).json({message: 'Not Found'});
 });
 
 let server;
