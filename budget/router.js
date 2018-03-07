@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const {LedgerEntry} = require('./models');
 
-router.get('/', passport.authenticate('jwt', {session: false}), (req, res)=> { 
+router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => { 
 	LedgerEntry
 		.find()
 		.exec()
@@ -43,6 +43,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', jsonParser, (req, res) => {
+	console.log('data posted')
 	const requiredFields = ['month', 'day', 'year', 'amount', 'category'];
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];

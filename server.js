@@ -28,7 +28,7 @@ app.use(passport.initialize());
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use('/budget/', ledgerEntriesRouter);
+app.use('/api/budget/', ledgerEntriesRouter);
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
