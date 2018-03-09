@@ -62,7 +62,7 @@ router.post('/', jsonParser, (req, res) => {
 		year: req.body.year,
 		amount: req.body.amount,
 		label: req.body.label,
-		type: req.body.type,
+		amountType: req.body.amountType,
 		category: req.body.category
 	});
 	res.status(201).json(item);
