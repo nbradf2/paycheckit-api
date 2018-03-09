@@ -7,21 +7,9 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const {LedgerEntry} = require('./models');
 
-router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => { 
+router.get('/:user', passport.authenticate('jwt', {session: false}), (req, res) => { 
 	LedgerEntry
-		.find()
-		.exec()
-		.then(entries => {
-			res.status(200).json(entries)
-		})
-		.catch(err => {
-			res.status(500).json({message: 'Internal server error'});
-		})
-});
-
-router.get('/user/:user', passport.authenticate('jwt', {session: false}), (req, res) => {
-	LedgerEntry
-		.find({user: `${req.params.user}`})
+		.find({user: req.params.user})
 		.exec()
 		.then(entries => {
 			res.status(200).json(entries)
@@ -62,10 +50,10 @@ router.post('/', jsonParser, (req, res) => {
 		year: req.body.year,
 		amount: req.body.amount,
 		label: req.body.label,
-		amountType: req.body.amountType,
-		category: req.body.category
-	});
-	res.status(201).json(item);
+		amountType: req.body.amountType
+	})
+	.then(ledgerEntry => res.status(200).json(ledgerEntry))
+	.catch(err => res.status(500).json({message: 'Internal server error'}))
 });
 
 router.put('/:id', jsonParser, (req, res) => {

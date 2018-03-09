@@ -10,8 +10,7 @@ const ledgerEntrySchema = mongoose.Schema({
 	year: {type: Number, required: true},
 	amount: {type: Number, required: true},
 	label: {type: String},
-	amountType: {type: String},
-	category: {type: String, required: true}
+	amountType: {type: String}
 })
 
 const LedgerEntry = mongoose.model('LedgerEntry', ledgerEntrySchema)
