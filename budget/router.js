@@ -9,7 +9,7 @@ const {LedgerEntry} = require('./models');
 
 router.get('/:user', passport.authenticate('jwt', {session: false}), (req, res) => { 
 	LedgerEntry
-		.find({user: req.params.user}).sort({year: -1, month: -1, day: -1})
+		.find({user: req.params.user}).sort({year: 1, month: 1, day: 1})
 		.exec()
 		.then(entries => {
 			res.status(200).json(entries)
